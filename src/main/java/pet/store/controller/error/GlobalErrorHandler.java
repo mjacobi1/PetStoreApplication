@@ -15,10 +15,10 @@ import lombok.extern.slf4j.Slf4j;
 public class GlobalErrorHandler {
 	@ExceptionHandler(NoSuchElementException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	public Map<String, String> noSuchElementException(NoSuchElementException noSuchElementException) {
-		log.error("No such element exists.");
+	public Map<String, String> handleNoSuchElementException(NoSuchElementException ex) {
+		log.error("Exception: {}", ex.toString());
 		
-		return Map.of("message", noSuchElementException.toString());
+		return Map.of("message", ex.toString());
 	}
 	
 }
